@@ -26,7 +26,7 @@ defmodule Permit.Phoenix.Plug do
       # A :manager can do all CRUD actions on RouteTemplate, and can do :read on User
       # if the User has public: true OR the User has :overseer_id equal to current user's
       # id.
-      grant(role)
+      permit()
       |> all(Lvauth.Planning.RouteTemplate)
       |> read(Lvauth.Accounts.User, public: true)
       |> read(LvMainFrame.Accounts.User,
@@ -178,9 +178,13 @@ defmodule Permit.Phoenix.Plug do
 
     load_key = if number == :one, do: :loaded_resource, else: :loaded_resources
 
-    authorize_and_preload_fn(number, authorization_module)
-    |> apply([subject, authorization_module, resource_module, controller_action, meta])
-    |> case do
+    case authorize_and_preload_fn(number, authorization_module).(
+           subject,
+           authorization_module,
+           resource_module,
+           controller_action,
+           meta
+         ) do
       {:authorized, record_or_records} -> Plug.Conn.assign(conn, load_key, record_or_records)
       :unauthorized -> opts[:handle_unauthorized].(conn)
     end

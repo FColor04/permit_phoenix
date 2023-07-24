@@ -51,7 +51,7 @@ defmodule Permit.Phoenix.LiveView do
   end
 
   @callback handle_unauthorized(Types.socket()) :: Types.hook_outcome()
-  @callback fetch_subject(map()) :: struct()
+  @callback fetch_subject(Types.socket(), map()) :: struct()
   @callback authorization_module() :: module()
   @callback preload_actions() :: list(atom())
   @callback fallback_path() :: binary()

@@ -48,8 +48,8 @@ defmodule Permit.Phoenix.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:permit, ">= 0.2.0"},
-      {:permit_ecto, ">= 0.2.1", only: :test},
+      {:permit, ">= 0.0.0"},
+      {:permit_ecto, ">= 0.0.0", only: :test},
       {:ecto, ">= 0.0.0", only: :test},
       {:ecto_sql, ">= 0.0.0", only: :test},
       {:postgrex, ">= 0.0.0", only: :test},
@@ -72,10 +72,10 @@ defmodule Permit.Phoenix.MixProject do
   end
 
   defp live_view_version do
-    System.get_env("LIVE_VIEW_VERSION", ">= 0.17")
+    System.get_env("LIVE_VIEW_VERSION", ">= 0.0.0")
   end
 
   defp phoenix_version do
-    System.get_env("LIVE_VIEW_VERSION", ">= 1.6")
+    System.get_env("LIVE_VIEW_VERSION", ">= 0.0.0")
   end
 end

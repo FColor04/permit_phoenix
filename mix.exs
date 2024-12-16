@@ -48,18 +48,18 @@ defmodule Permit.Phoenix.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:permit, "~> 0.2"},
-      {:permit_ecto, "~> 0.2.1", only: :test},
-      {:ecto, "~> 3.0", only: :test},
-      {:ecto_sql, "~> 3.0", only: :test},
-      {:postgrex, "~> 0.16", only: :test},
+      {:permit, ">= 0.2"},
+      {:permit_ecto, ">= 0.2.1", only: :test},
+      {:ecto, ">= 3.0", only: :test},
+      {:ecto_sql, ">= 3.0", only: :test},
+      {:postgrex, ">= 0.16", only: :test},
       {:phoenix_live_view, "#{live_view_version()}", optional: true},
       {:phoenix, "#{phoenix_version()}", optional: true},
-      {:jason, "~> 1.3", only: [:dev, :test]},
+      {:jason, ">= 1.3", only: [:dev, :test]},
       {:floki, ">= 0.30.0", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false},
-      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
+      {:dialyxir, ">= 1.3", only: [:dev, :test], runtime: false},
+      {:credo, ">= 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
@@ -72,10 +72,10 @@ defmodule Permit.Phoenix.MixProject do
   end
 
   defp live_view_version do
-    System.get_env("LIVE_VIEW_VERSION", "~> 0.17")
+    System.get_env("LIVE_VIEW_VERSION", ">= 0.17")
   end
 
   defp phoenix_version do
-    System.get_env("LIVE_VIEW_VERSION", "~> 1.6")
+    System.get_env("LIVE_VIEW_VERSION", ">= 1.6")
   end
 end
